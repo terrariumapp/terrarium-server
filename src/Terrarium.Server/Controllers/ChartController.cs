@@ -19,6 +19,7 @@ namespace Terrarium.Server.Controllers
         /// point of population data.
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public IEnumerable<object> GetSpeciesList()
         {
             return null;
@@ -30,6 +31,7 @@ namespace Terrarium.Server.Controllers
         /// </summary>
         /// <param name="species"></param>
         /// <returns></returns>
+        [HttpGet]
         public IEnumerable<object> GrabLatestSpeciesData(string species)
         {
             return null;
@@ -43,6 +45,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="tat"></param>
         /// <param name="num"></param>
         /// <returns></returns>
+        [HttpGet]
         public IEnumerable<object> GetTopAnimals(string version, OrganismType tat, int num)
         {
             return null;
