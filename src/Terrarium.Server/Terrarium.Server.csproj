@@ -216,6 +216,23 @@
     <Content Include="Images\banner_top_right.png" />
     <Content Include="Images\border_left.png" />
     <Content Include="Images\border_right.png" />
+    <Content Include="Images\Documentation\image001.jpg" />
+    <Content Include="Images\Documentation\image002.jpg" />
+    <Content Include="Images\Documentation\image003.jpg" />
+    <Content Include="Images\Documentation\image004.jpg" />
+    <Content Include="Images\Documentation\image005.jpg" />
+    <Content Include="Images\Documentation\screenshot.jpg" />
+    <Content Include="Images\Documentation\tutorial_image001.jpg" />
+    <Content Include="Images\Documentation\tutorial_image002.jpg" />
+    <Content Include="Images\Documentation\tutorial_image003.jpg" />
+    <Content Include="Images\Documentation\tutorial_image004.jpg" />
+    <Content Include="Images\Documentation\whidbey_bottombar.jpg" />
+    <Content Include="Images\Documentation\whidbey_developerpanel.jpg" />
+    <Content Include="Images\Documentation\whidbey_gameview.jpg" />
+    <Content Include="Images\Documentation\whidbey_image001.jpg" />
+    <Content Include="Images\Documentation\whidbey_image003.jpg" />
+    <Content Include="Images\Documentation\whidbey_overview.jpg" />
+    <Content Include="Images\Documentation\whidbey_topbar.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
@@ -248,6 +265,10 @@
     <Content Include="Views\Home\Tutorial.cshtml" />
     <Content Include="Views\Home\Framework.cshtml" />
     <Content Include="Views\Home\Samples.cshtml" />
+    <Content Include="Views\Shared\_InfoBar.cshtml" />
+    <Content Include="Views\Shared\_ServerStatus.cshtml" />
+    <Content Include="Views\Shared\_TopCritters.cshtml" />
+    <Content Include="Views\Shared\_RandomTips.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
