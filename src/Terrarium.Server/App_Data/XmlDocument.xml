@@ -492,6 +492,41 @@
             </summary>
             <param name="bug">Information from the client with details of the bug</param>
         </member>
+        <member name="T:Terrarium.Server.Controllers.ChartController">
+            <summary>
+            The chart service is capable of providing remote clients
+            with charting data by calling on the local charting components to
+            generate the chart and then returning any required information to the
+            remote client to display the chart.  This service is also capable of
+            returning all the data required to produce a remote interface to
+            graph generation and the information required to generate top-n reports.
+            </summary>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.ChartController.GetSpeciesList">
+            <summary>
+            Returns a graph of ALL species along with their latest
+            point of population data.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.ChartController.GrabLatestSpeciesData(System.String)">
+            <summary>
+            Returns the latest datapoint of statistics information
+            for a given species in the form of a dataset.
+            </summary>
+            <param name="species"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.ChartController.GetTopAnimals(System.String,Terrarium.Server.Models.OrganismType,System.Int32)">
+            <summary>
+            Returns various information about the top-num animals
+            of a given organism type for use in top-n reporting.
+            </summary>
+            <param name="version"></param>
+            <param name="tat"></param>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
         <member name="T:Terrarium.Server.Controllers.MessagingController">
             <summary>
             Returns various informational messages from the server
@@ -514,6 +549,87 @@
             Gets the latest version of Terrarium from the server.
             </summary>
             <returns>The latest version as stored in the web.config file or a stock one if we can't read it.</returns>
+        </member>
+        <member name="T:Terrarium.Server.Controllers.PeerDiscoveryController">
+            <summary>
+            The Peer Discovery Service is the central location where
+            peers can announce their existence and get information about other
+            peers.  The primary services here are registering a user's email address,
+            getting peer counts and lists, and registering a peer.
+            </summary>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.PeerDiscoveryController.RegisterUser(System.String)">
+            <summary>
+            Registers a Terrarium client user into the server database.
+            </summary>
+            <param name="email">E-mail address of the Terrarium user</param>
+            <returns>Boolean indicating success or failure of the user registration.</returns>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.PeerDiscoveryController.GetNumPeers(System.String,System.String)">
+            <summary>
+            Obtains the number of peers currently connected to the Terrarium Server.
+            </summary>
+            <param name="version">String specifying the version number.</param>
+            <param name="channel">String specifying the channel number.</param>
+            <returns>Integer count of the number of peers for the specified version and channel number.</returns>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.PeerDiscoveryController.ValidatePeer">
+            <summary>
+            Validates a peer connection.
+            </summary>
+            <returns>A string representing the "REMOTE_ADDR" attribute from the Web Application ServerVariables collection.</returns>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.PeerDiscoveryController.IsVersionDisabled(System.String)">
+            <summary>
+            Checks to see if a specific version is disabled or not.  Used by the client at start up.
+            This allows an admin to totally shutdown a version.
+            </summary>
+            <param name="version">String specifying the version number.</param>
+            <returns>A PeerVersionResult object containing the results of the query</returns>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.PeerDiscoveryController.RegisterMyPeerGetCountAndPeerList(System.String,System.String,System.Guid)">
+            <summary>
+            Registers a peer connection with the Terrarium Server.
+            </summary>
+            <param name="version">String specifying the version number.</param>
+            <param name="channel">String specifying the channel number.</param>
+            <param name="guid">Guid (Globally Unique Identifier) for the peer connection.</param>
+            <returns>A PeerRegisterResult object containing the registration result</returns>
+        </member>
+        <member name="T:Terrarium.Server.Controllers.ReportController">
+            <summary>
+            This class implements the reporting web service for the Terrarium Server.
+            This web service takes reporting data from clients and inserts
+            the data into a special history table.This data is later rolled up 
+            by the NonPageServices class and turned into data points.
+            These data points are used used when creating graphs of the server activity, 
+            species populations, etc.
+            </summary>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.ReportController.ReportPopulation(System.Object,System.Guid,System.Int32)">
+            <summary>
+            This method takes a dataset from the client along with
+            a game state guid and the tick this data represents as its parameter. It uses this
+            information to make insertions into the History table in the Terrarium Server database.
+            </summary>
+            <remarks>
+            This function is capable of throttling users and throwing away their
+            data to prevent cheating or DOS attacks.
+            
+            This function is also capable of detecting corrupted or out of date
+            clients and alerting them as to such.  It can also detect if the client
+            is reporting information on blacklisted creatures and notify the peer
+            of that special case.
+            
+            There is also some code used to draw constraints on the data reported
+            by a client.  In some cases a hacked client could report extremely high
+            and bogus numbers.  This function will throw out any data that is heavily
+            out of bounds to help prevent cheating.
+            </remarks>
+            <param name="data">A Dataset containing species population data.</param>
+            <param name="guid">Guid associated with a peer connection.</param>
+            <param name="currentTick">Integer representing the current tick (time increment).</param>
+            <returns>A possible value from the ReturnCode enumeration.</returns>
         </member>
         <member name="T:Terrarium.Server.Controllers.SpeciesController">
             <summary>
@@ -595,6 +711,46 @@
             Takes an object from a client and inserts a record into the database.
             </summary>
             <param name="data">Watson object containing error information.</param>
+        </member>
+        <member name="T:Terrarium.Server.Models.OrganismType">
+            <summary>
+            Used to filter organisms by type when returning
+            top organism information.
+            </summary>
+        </member>
+        <member name="P:Terrarium.Server.Models.PeerVersionResult.Result">
+            <summary>
+            True if the version is enabled, false otherwise
+            </summary>
+        </member>
+        <member name="P:Terrarium.Server.Models.PeerVersionResult.ErrorMessage">
+            <summary>
+            This is an admin message that the client will display if the version is disabled
+            </summary>
+        </member>
+        <member name="T:Terrarium.Server.Models.RegisterPeerResult">
+            <summary>
+            This enum contains the values for different
+            response codes when a client calls RegisterMyPeerGetCountAndPeerList.
+            Success means the call was good. Failure is generally a database
+            timeout or other database issue, whereas a GlobalFailure means we
+            have disabled that version of the client and wish the user to upgrade.
+            </summary>
+        </member>
+        <member name="F:Terrarium.Server.Models.RegisterPeerResult.Success">
+            <summary>
+            Indicates successful registration of a peer connection.
+            </summary>
+        </member>
+        <member name="F:Terrarium.Server.Models.RegisterPeerResult.Failure">
+            <summary>
+            Indicates an unsuccessful attempt to register a peer connection.
+            </summary>
+        </member>
+        <member name="F:Terrarium.Server.Models.RegisterPeerResult.GlobalFailure">
+            <summary>
+            Indicates an unsuccessful attempt to register a peer connection.
+            </summary>
         </member>
         <member name="T:Terrarium.Server.Models.SpeciesServiceStatus">
             <summary>

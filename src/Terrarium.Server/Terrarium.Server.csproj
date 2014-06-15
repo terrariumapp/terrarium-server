@@ -151,8 +151,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BugController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessagingController.cs" />
+    <Compile Include="Controllers\PeerDiscoveryController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SpeciesController.cs" />
     <Compile Include="Controllers\UsageController.cs" />
     <Compile Include="Controllers\WatsonController.cs" />
@@ -160,6 +163,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bug.cs" />
+    <Compile Include="Models\OrganismType.cs" />
+    <Compile Include="Models\PeerVersionResult.cs" />
+    <Compile Include="Models\RegisterPeerResult.cs" />
+    <Compile Include="Models\PeerRegisterResult.cs" />
     <Compile Include="Models\ServerSettings.cs" />
     <Compile Include="Models\SpeciesServiceStatus.cs" />
     <Compile Include="Models\Watson.cs" />
