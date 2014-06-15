@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace Terrarium.Server
 {
@@ -22,6 +21,7 @@ namespace Terrarium.Server
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-theme.css",
                       "~/Content/site.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
