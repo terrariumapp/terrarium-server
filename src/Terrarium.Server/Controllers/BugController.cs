@@ -3,6 +3,9 @@ using Terrarium.Server.Models;
 
 namespace Terrarium.Server.Controllers
 {
+    /// <summary>
+    /// Allows users to submit bug reports to the server
+    /// </summary>
     public class BugController : ApiController
     {
         /// <summary>

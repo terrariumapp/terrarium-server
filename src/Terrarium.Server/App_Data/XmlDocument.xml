@@ -481,11 +481,21 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:Terrarium.Server.Controllers.BugController">
+            <summary>
+            Allows users to submit bug reports to the server
+            </summary>
+        </member>
         <member name="M:Terrarium.Server.Controllers.BugController.ReportBug(Terrarium.Server.Models.Bug)">
             <summary>
             Report a real bug with Terrarium
             </summary>
             <param name="bug">Information from the client with details of the bug</param>
+        </member>
+        <member name="T:Terrarium.Server.Controllers.MessagingController">
+            <summary>
+            Returns various informational messages from the server
+            </summary>
         </member>
         <member name="M:Terrarium.Server.Controllers.MessagingController.GetWelcomeMessage">
             <summary>
@@ -504,6 +514,104 @@
             Gets the latest version of Terrarium from the server.
             </summary>
             <returns>The latest version as stored in the web.config file or a stock one if we can't read it.</returns>
+        </member>
+        <member name="T:Terrarium.Server.Controllers.SpeciesController">
+            <summary>
+            Encapsulates the functions required to insert new creatures into the
+            ecosystem and get creatures from the server during a reintroduction.
+            </summary>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.SpeciesController.GetBlacklistedSpecies">
+            <summary>
+            Gets a list of all species that have been blacklisted.
+            </summary>
+            <returns>The list of blacklisted species.</returns>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.SpeciesController.GetExtinctSpecies(System.String,System.String)">
+            <summary>
+            Returns a dataset of all species whose population has reached 0 and therefore can be reintroduced.
+            </summary>
+            <param name="version">The specific version of the species to get.</param>
+            <param name="filter">The name of the species to filter or "All" for all available creatures.</param>
+            <returns>A collection of creatures that meets the version and filter criteria</returns>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.SpeciesController.GetAllSpecies(System.String,System.String)">
+            <summary>
+            Returns a dataset of all species given a specific version and filter criterion.
+            </summary>
+            <param name="version">The specific version of the species to get.</param>
+            <param name="filter">The name of the species to filter or "All" for all available creatures.</param>
+            <returns>A collection of creatures that meets the version and filter criteria</returns>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.SpeciesController.GetSpeciesAssembly(System.String,System.String)">
+            <summary>
+            Gets the assembly as a byte array for the species with a given name and version number.
+            </summary>
+            <param name="name">The name of the species to get</param>
+            <param name="version">The version of the species to get</param>
+            <returns>A byte array of the .NET assembly matching the criterion</returns>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.SpeciesController.ReintroduceSpecies(System.String,System.String,System.Guid)">
+            <summary>
+            Introduces a previously extinct creature back into the EcoSystem and marks it as not extinct.
+            </summary>
+            <param name="name">The name of the species to reintroduce</param>
+            <param name="version">The version of the species to reintroduce</param>
+            <param name="peerGuid"></param>
+            <returns>A byte array of the .NET assembly matching the criterion</returns>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.SpeciesController.Add(System.String,System.String,System.String,System.String,System.String,System.String,System.Byte[])">
+            <summary>
+             This function takes a creature assembly, author information,
+             and a species name and attempts to insert the creature into the EcoSystem.
+             This involves adding the creature to the database and saving the assembly
+             on the server so it can later be used for reintroductions.
+             All strings are checked for inflammatory words and the insertion is not
+             performed if any are found.  In addition the 5 minute rule is checked to
+             make sure the user isn't spamming the server.  Only 1 upload is allowed
+             per 5 minutes.  An additional constraint of only 30 uploads per day is
+             also enforced through the 24 hour rule. 
+             
+             The creature is then inserted into the database.  If the creature already
+             exists the function tells the client the creature is preexisting and the
+             insert fails.  If the insert is successful the creature is then saved to disk on the server.
+            </summary>
+            <param name="name"></param>
+            <param name="version"></param>
+            <param name="type"></param>
+            <param name="author"></param>
+            <param name="email"></param>
+            <param name="assemblyFullName"></param>
+            <param name="assemblyCode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Terrarium.Server.Controllers.WatsonController">
+            <summary>
+            Enables logging of errors from Terrarium clients.
+            </summary>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.WatsonController.ReportError(Terrarium.Server.Models.Watson)">
+            <summary>
+            Takes an object from a client and inserts a record into the database.
+            </summary>
+            <param name="data">Watson object containing error information.</param>
+        </member>
+        <member name="T:Terrarium.Server.Models.SpeciesServiceStatus">
+            <summary>
+            This enumeration contains return codes identifying
+            the results of an creature insertion into the Terrarium.
+            Success identifies an inserted creature.  AlreadyExists means
+            the creatures name has already been taken and a new name must be given.
+            ServerDown means that a database error occured and the creature
+            was not submitted.  VersionIncompatible is used when the required
+            parameters aren't sent to the function.  FiveMinuteThrottle is
+            returned whenever a user tries to submit more than one animal
+            per 5 minutes.  TwentyFourHourThrottle occurs whenever a user
+            tries to submit more than 30 creatures in a 24 hour period.			
+            The last three are used whenever a passed string fails policheck.	
+            Each enum value identifies a failure in a different string, whether
+            the species name, author name, or the email has an questionable value.
+            </summary>
         </member>
     </members>
 </doc>

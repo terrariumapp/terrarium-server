@@ -3,6 +3,9 @@ using Terrarium.Server.Models;
 
 namespace Terrarium.Server.Controllers
 {
+    /// <summary>
+    /// Returns various informational messages from the server
+    /// </summary>
     public class MessagingController : ApiController
     {
         /// <summary>

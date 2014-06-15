@@ -153,12 +153,16 @@
     <Compile Include="Controllers\BugController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessagingController.cs" />
+    <Compile Include="Controllers\SpeciesController.cs" />
     <Compile Include="Controllers\UsageController.cs" />
+    <Compile Include="Controllers\WatsonController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bug.cs" />
     <Compile Include="Models\ServerSettings.cs" />
+    <Compile Include="Models\SpeciesServiceStatus.cs" />
+    <Compile Include="Models\Watson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\UsageViewModel.cs" />
   </ItemGroup>
