@@ -1,0 +1,83 @@
+﻿@model Terrarium.Server.ViewModels.UsageViewModel
+
+<table class="table">
+    <tr>
+        <td colspan="6">
+            <h3>Usage Summary</h3>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="6">Below are the statistics for you.</td>
+    </tr>
+    <tr>
+        <td colspan="6"><b>Your Statistics (@Model.UserAliasLabel)</b></td>
+    </tr>
+    <tr>
+        <td>Today's Hours</td>
+        <td>@Model.UserTodayLabel</td>
+        <td>This Week's Hours</td>
+        <td>@Model.UserWeekLabel</td>
+        <td>Total Hours</td>
+        <td>@Model.UserTotalLabel</td>
+    </tr>
+</table>
+
+<table class="table">
+    <tr>
+        <td>
+            <h2>Top 10 Participants</h2>
+        </td>
+        <td>
+            <div class="pull-right">
+                <b>Period</b>
+                <ul class="nav nav-pills">
+                    <li><a href="#">Today</a></li>
+                    <li class="active"><a href="#">Week</a></li>
+                    <li><a href="#">Total</a></li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            These are the top 10 participants based on total hours that they have run Terrarium. Use the buttons above to choose which period to view.
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <asp:DataGrid CellPadding="4" GridLines="None" Width="100%" ID="individualDataGrid" runat="server" AutoGenerateColumns="False" EnableViewState="False">
+                <itemstyle horizontalalign="Left" verticalalign="Middle" font-size="0.75em" backcolor="White" forecolor="Black" />
+                <alternatingitemstyle horizontalalign="Left" verticalalign="Middle" font-size="0.75em" backcolor="#F0F0F0" forecolor="Black" />
+                <columns>
+                    <asp:templatecolumn headertext="Rank">
+                        <headerstyle width="64px" />
+                        <itemtemplate>
+                            <span><%# (Container.DataSetIndex + 1).ToString() %></span>
+                        </itemtemplate>
+                    </asp:templatecolumn>
+                    <asp:templatecolumn>
+                        <headertemplate>
+                            Alias
+                        </headertemplate>
+                        <headerstyle font-bold="True" />
+                        <itemtemplate>
+                            <span><%# GetUserUsageSummary(Container.DataItem).Alias%></span>
+                        </itemtemplate>
+                    </asp:templatecolumn>
+                    <asp:templatecolumn>
+                        <headertemplate>
+                            Hours
+                        </headertemplate>
+                        <headerstyle cssclass="TypeGridNameHeader" width="96px" />
+                        <itemtemplate>
+                            <span><%# GetUserUsageSummary(Container.DataItem).TotalHours%></span>
+                        </itemtemplate>
+                    </asp:templatecolumn>
+                </columns>
+                <headerstyle backcolor="#808080" font-bold="True" font-size="0.75em" forecolor="White"
+                             horizontalalign="Left" verticalalign="Middle" />
+            </asp:DataGrid>
+        </td>
+    </tr>
+</table>
+

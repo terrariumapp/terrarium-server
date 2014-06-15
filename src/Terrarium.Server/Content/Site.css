@@ -15,3 +15,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* Push the help page down so our Help Page Home link isn't crowded against the navbar */
+.help-page {
+    padding-top: 10px;
+}
