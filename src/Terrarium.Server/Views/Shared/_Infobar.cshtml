@@ -1,48 +1,11 @@
-﻿<table class="table">
-    <tr>
-        <td class="MenuPanelSpacer" align="center"></td>
-    </tr>
-    <tr>
-        <td align="center">
-            <table class="table">
-                <tr>
-                    <td>
-                        <span class="MenuTitle">Server Status</span>
-                        @Html.Partial("_ServerStatus")
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td class="MenuPanelSpacer" align="center"></td>
-    </tr>
-    <tr>
-        <td align="center">
-            <table class="table">
-                <tr>
-                    <td>
-                        <span class="MenuTitle">Top Critters</span>
-                        @Html.Partial("_TopCritters")
-                        <asp:HyperLink ID="Hyperlink1" NavigateUrl="~/charts/default.aspx" CssClass="SmallLink" runat="server">more...</asp:HyperLink>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td class="MenuPanelSpacer" align="center"></td>
-    </tr>
-    <tr>
-        <td align="center">
-            <table class="table">
-                <tr>
-                    <td>
-                        <span class="MenuTitle">Random Tip</span>
-                        @Html.Partial("_RandomTips")
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.Partial("_ServerStatus")
+    </div>
+    <div class="panel-body">
+        @Html.Partial("_RandomTips")
+    </div>
+    <div class="panel-body">
+        @Html.Partial("_TopCritters")
+    </div>
+</div>
