@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.Title - Terrarium</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -21,7 +21,18 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("Usage", "Index", "Usage", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Usage", "Usage", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Publish", "Publish", "Home", new { area = "" }, null)</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documenation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("What is Terrarium", "About", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("User Interface", "UserInterface", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("C# Tutorial", "Tutorial", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Using the .NET SDK", "Framework", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Samples", "Samples", "Home", new { area = "" }, null)</li>
+                        </ul>
+                    </li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                 </ul>
             </div>

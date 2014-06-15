@@ -701,6 +701,17 @@
             <param name="assemblyCode"></param>
             <returns></returns>
         </member>
+        <member name="T:Terrarium.Server.Controllers.UsageController">
+            <summary>
+            Reports on usage of the system.
+            </summary>
+        </member>
+        <member name="M:Terrarium.Server.Controllers.UsageController.ReportUsage(Terrarium.Server.Models.UsageData)">
+            <summary>
+            Allows a client to report it's usage and adds it to the system.
+            </summary>
+            <param name="data">UsageData from the client about the current state.</param>
+        </member>
         <member name="T:Terrarium.Server.Controllers.WatsonController">
             <summary>
             Enables logging of errors from Terrarium clients.
@@ -768,6 +779,69 @@
             Each enum value identifies a failure in a different string, whether
             the species name, author name, or the email has an questionable value.
             </summary>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.Alias">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.AnimalCount">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.ClrVersion">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.Domain">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.GameVersion">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.IPAddress">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.MachineName">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.MaxAnimalCount">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.MaxWorkingSet">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.MinWorkingSet">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.OSVersion">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.PeerChannel">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.PeerCount">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.ProcessorCount">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.ProcessorTimeInSeconds">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.ProcessStartTime">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.TickTime">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.UsageMinutes">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.WorkingSet">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.WorldHeight">
+            <remarks/>
+        </member>
+        <member name="F:Terrarium.Server.Models.UsageData.WorldWidth">
+            <remarks/>
         </member>
     </members>
 </doc>

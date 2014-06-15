@@ -1,4 +1,8 @@
-﻿<div class="jumbotron">
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron">
     <h1>Welcome to .NET Terrarium</h1>
     <p class="lead">Terrarium provide a great way for developers to learn about the .NET programming model and languages as they develop creatures and introduce them into a peer-to-peer ecosystem.</p>
     <p><a href="https://github.com/terrariumapp" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
@@ -6,7 +10,7 @@
 
 <h2>Usage Statistics</h2>
 
-<p>Available now is a page that you can use to track your usage statistics. Check it out <b>@Html.ActionLink("now", "Index", "Usage")</b>!</p>
+<p>Available now is a page that you can use to track your usage statistics. Check it out <b>@Html.ActionLink("now", "Usage", "Home")</b>!</p>
 
 <h2>Known Issues</h2>
 
