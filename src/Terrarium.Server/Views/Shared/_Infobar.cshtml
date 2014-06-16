@@ -3,7 +3,7 @@
         @Html.Partial("_ServerStatus")
     </div>
     <div class="panel-body">
-        @Html.Partial("_RandomTips")
+        @Html.Action("RandomTip", "Home");
     </div>
     <div class="panel-body">
         @Html.Partial("_TopCritters")

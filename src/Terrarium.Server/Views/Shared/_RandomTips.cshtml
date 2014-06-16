@@ -1,8 +1,10 @@
-﻿<div class="list-group">
+﻿@model Terrarium.Server.ViewModels.RandomTipViewModel
+
+<div class="list-group">
     <div class="list-group-item active">
         <h4 class="list-group-item-heading" style="color:white">Random Tips</h4>
     </div>
     <div class="list-group-item">
-        You can use Alt-Enter to enter a true Full-Screen view.
+        @Model.Tip
     </div>
 </div>
