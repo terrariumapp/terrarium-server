@@ -18,6 +18,11 @@ namespace Terrarium.Server.Controllers
             return View();
         }
 
+        public ActionResult Charts()
+        {
+            return View();
+        }
+
         public ActionResult Usage()
         {
             var vm = new UsageViewModel();

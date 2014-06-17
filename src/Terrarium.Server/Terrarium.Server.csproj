@@ -295,6 +295,7 @@
     <Content Include="Views\Shared\_HelpLayout.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Home\Charts.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
