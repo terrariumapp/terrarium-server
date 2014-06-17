@@ -1,0 +1,34 @@
+﻿<header>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Terrarium", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Usage Stats", "Usage", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Charts", "Publish", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Install", "Publish", "Home", new { area = "" }, null)</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documenation <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("What is Terrarium", "About", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("User Interface", "UserInterface", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("C# Tutorial", "Tutorial", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Using the .NET SDK", "Framework", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Samples", "Samples", "Home", new { area = "" }, null)</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+

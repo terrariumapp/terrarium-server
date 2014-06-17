@@ -4,14 +4,21 @@ using Terrarium.Server.Models;
 
 namespace Terrarium.Server.DataModels
 {
-    public class TerrariumDbContext : DbContext
+    public class TerrariumDbContext : DbContext, ITerrariumDbContext
     {
-//        public DbSet<Watson> WatsonDbSet { get; set; }
-        public DbSet<RandomTip> RandomTips { get; set; }
+        public TerrariumDbContext() : base("TerrariumDb")
+        {
+        }
+
+        public DbSet<RandomTip> Tips { get; set; }
+
+        IQueryable<RandomTip> ITerrariumDbContext.Tips
+        {
+            get { return Tips; }
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-//            modelBuilder.Configurations.Add(new WatsonDataModel());
             modelBuilder.Configurations.Add(new RandomTipDataModel());
         }
     }

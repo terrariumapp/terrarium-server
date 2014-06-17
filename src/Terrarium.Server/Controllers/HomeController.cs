@@ -1,12 +1,18 @@
-﻿using System;
-using System.Web.Mvc;
-using Terrarium.Server.Models;
+﻿using System.Web.Mvc;
+using Terrarium.Server.Repositories;
 using Terrarium.Server.ViewModels;
 
 namespace Terrarium.Server.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ITipRepository _tipRepository;
+
+        public HomeController(ITipRepository tipRepository)
+        {
+            _tipRepository = tipRepository;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -58,11 +64,7 @@ namespace Terrarium.Server.Controllers
         [ChildActionOnly]
         public ActionResult RandomTip()
         {
-            // TODO get from IRepository
-            var tip = new RandomTip();
-            var random = new Random();
-            tip.Tip = "Random Tip #" + random.Next(10, 300); //You can use Alt-Enter to enter a true Full-Screen view.
-            // TODO map vm from model using AutoMapper
+            var tip = _tipRepository.GetRandomTip();
             var vm = new RandomTipViewModel();
             vm.Tip = tip.Tip;
             return PartialView("_RandomTips", vm);

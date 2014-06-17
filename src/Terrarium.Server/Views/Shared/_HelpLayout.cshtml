@@ -9,14 +9,11 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @Html.Partial("_Header");
+    @Html.Partial("_Header")
     <div class="container body-content">
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-12">
                 @RenderBody()
-            </div>
-            <div class="col-lg-3">
-                @Html.Partial("_InfoBar")
             </div>
         </div>
     </div>
