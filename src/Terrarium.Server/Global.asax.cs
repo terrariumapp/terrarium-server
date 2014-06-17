@@ -11,7 +11,7 @@ namespace Terrarium.Server
         protected void Application_Start()
         {
             //TODO uncomment this to get a new database created
-            //System.Data.Entity.Database.SetInitializer(new TerrariumDbSeedInitializer());
+            //TODO System.Data.Entity.Database.SetInitializer(new TerrariumDbSeedInitializer());
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
             MvcHandler.DisableMvcResponseHeader = true;
