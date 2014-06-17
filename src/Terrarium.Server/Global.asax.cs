@@ -3,6 +3,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Terrarium.Server.DataModels;
 
 namespace Terrarium.Server
 {
@@ -11,7 +12,7 @@ namespace Terrarium.Server
         protected void Application_Start()
         {
             //TODO uncomment this to get a new database created
-            //TODO System.Data.Entity.Database.SetInitializer(new TerrariumDbSeedInitializer());
+            System.Data.Entity.Database.SetInitializer(new TerrariumDbSeedInitializer());
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
             MvcHandler.DisableMvcResponseHeader = true;
