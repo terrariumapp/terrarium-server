@@ -65,9 +65,7 @@ namespace Terrarium.Server.Controllers
         public ActionResult RandomTip()
         {
             var tip = _tipRepository.GetRandomTip();
-            var vm = new RandomTipViewModel();
-            vm.Tip = tip.Tip;
-            return PartialView("_RandomTips", vm);
+            return PartialView("_RandomTips", new RandomTipViewModel {Tip = tip.Tip});
         }
     }
 }

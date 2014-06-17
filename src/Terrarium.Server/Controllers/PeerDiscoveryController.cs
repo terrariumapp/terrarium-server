@@ -30,7 +30,7 @@ namespace Terrarium.Server.Controllers
         /// <returns>Integer count of the number of peers for the specified version and channel number.</returns>
         public int GetNumPeers(string version, string channel)
         {
-            return 0;
+            return 10;
         }
 
         /// <summary>
