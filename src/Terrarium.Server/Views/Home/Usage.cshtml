@@ -49,38 +49,39 @@
     </tr>
     <tr>
         <td colspan="2">
-            <asp:DataGrid CellPadding="4" GridLines="None" Width="100%" ID="individualDataGrid" runat="server" AutoGenerateColumns="False" EnableViewState="False">
-                <itemstyle horizontalalign="Left" verticalalign="Middle" font-size="0.75em" backcolor="White" forecolor="Black" />
-                <alternatingitemstyle horizontalalign="Left" verticalalign="Middle" font-size="0.75em" backcolor="#F0F0F0" forecolor="Black" />
-                <columns>
-                    <asp:templatecolumn headertext="Rank">
-                        <headerstyle width="64px" />
-                        <itemtemplate>
-                            <span><%# (Container.DataSetIndex + 1).ToString() %></span>
-                        </itemtemplate>
-                    </asp:templatecolumn>
-                    <asp:templatecolumn>
-                        <headertemplate>
-                            Alias
-                        </headertemplate>
-                        <headerstyle font-bold="True" />
-                        <itemtemplate>
-                            <span><%# GetUserUsageSummary(Container.DataItem).Alias%></span>
-                        </itemtemplate>
-                    </asp:templatecolumn>
-                    <asp:templatecolumn>
-                        <headertemplate>
-                            Hours
-                        </headertemplate>
-                        <headerstyle cssclass="TypeGridNameHeader" width="96px" />
-                        <itemtemplate>
-                            <span><%# GetUserUsageSummary(Container.DataItem).TotalHours%></span>
-                        </itemtemplate>
-                    </asp:templatecolumn>
-                </columns>
-                <headerstyle backcolor="#808080" font-bold="True" font-size="0.75em" forecolor="White"
-                             horizontalalign="Left" verticalalign="Middle" />
-            </asp:DataGrid>
+            
+@*            <asp:DataGrid CellPadding="4" GridLines="None" Width="100%" ID="individualDataGrid" runat="server" AutoGenerateColumns="False" EnableViewState="False">*@
+@*                <itemstyle horizontalalign="Left" verticalalign="Middle" font-size="0.75em" backcolor="White" forecolor="Black" />*@
+@*                <alternatingitemstyle horizontalalign="Left" verticalalign="Middle" font-size="0.75em" backcolor="#F0F0F0" forecolor="Black" />*@
+@*                <columns>*@
+@*                    <asp:templatecolumn headertext="Rank">*@
+@*                        <headerstyle width="64px" />*@
+@*                        <itemtemplate>*@
+@*                            <span><%# (Container.DataSetIndex + 1).ToString() %></span>*@
+@*                        </itemtemplate>*@
+@*                    </asp:templatecolumn>*@
+@*                    <asp:templatecolumn>*@
+@*                        <headertemplate>*@
+@*                            Alias*@
+@*                        </headertemplate>*@
+@*                        <headerstyle font-bold="True" />*@
+@*                        <itemtemplate>*@
+@*                            <span><%# GetUserUsageSummary(Container.DataItem).Alias%></span>*@
+@*                        </itemtemplate>*@
+@*                    </asp:templatecolumn>*@
+@*                    <asp:templatecolumn>*@
+@*                        <headertemplate>*@
+@*                            Hours*@
+@*                        </headertemplate>*@
+@*                        <headerstyle cssclass="TypeGridNameHeader" width="96px" />*@
+@*                        <itemtemplate>*@
+@*                            <span><%# GetUserUsageSummary(Container.DataItem).TotalHours%></span>*@
+@*                        </itemtemplate>*@
+@*                    </asp:templatecolumn>*@
+@*                </columns>*@
+@*                <headerstyle backcolor="#808080" font-bold="True" font-size="0.75em" forecolor="White"*@
+@*                             horizontalalign="Left" verticalalign="Middle" />*@
+@*            </asp:DataGrid>*@
         </td>
     </tr>
 </table>
