@@ -36,36 +36,6 @@ namespace Terrarium.Server.Controllers
             return View(vm);
         }
 
-        public ActionResult Publish()
-        {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            return View();
-        }
-
-        public ActionResult UserInterface()
-        {
-            return View();
-        }
-
-        public ActionResult Tutorial()
-        {
-            return View();
-        }
-
-        public ActionResult Framework()
-        {
-            return View();
-        }
-
-        public ActionResult Samples()
-        {
-            return View();
-        }
-
         [ChildActionOnly]
         public ActionResult RandomTip()
         {
