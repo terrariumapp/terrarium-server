@@ -176,6 +176,7 @@
     <Compile Include="DataModels\RandomTipDataModel.cs" />
     <Compile Include="DataModels\TerrariumDbContext.cs" />
     <Compile Include="DataModels\TerrariumDbSeedInitializer.cs" />
+    <Compile Include="DataModels\UsageDataModel.cs" />
     <Compile Include="DataModels\WatsonDataModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,11 +189,16 @@
     <Compile Include="Models\ServerSettings.cs" />
     <Compile Include="Models\SpeciesServiceStatus.cs" />
     <Compile Include="Models\RandomTip.cs" />
+    <Compile Include="Models\Usage.cs" />
     <Compile Include="Models\UsageData.cs" />
+    <Compile Include="Models\UsagePeriod.cs" />
+    <Compile Include="Models\UserUsageSummary.cs" />
     <Compile Include="Models\Watson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ITipRepository.cs" />
+    <Compile Include="Repositories\IUsageRepository.cs" />
     <Compile Include="Repositories\TipRepository.cs" />
+    <Compile Include="Repositories\UsageRepository.cs" />
     <Compile Include="ViewModels\RandomTipViewModel.cs" />
     <Compile Include="ViewModels\UsageViewModel.cs" />
   </ItemGroup>

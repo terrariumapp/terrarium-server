@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Terrarium.Server.Models;
 using Terrarium.Server.Repositories;
 using Terrarium.Server.ViewModels;
 
@@ -7,10 +8,12 @@ namespace Terrarium.Server.Controllers
     public class HomeController : Controller
     {
         private readonly ITipRepository _tipRepository;
+        private readonly IUsageRepository _usageRepository;
 
-        public HomeController(ITipRepository tipRepository)
+        public HomeController(ITipRepository tipRepository, IUsageRepository usageRepository)
         {
             _tipRepository = tipRepository;
+            _usageRepository = usageRepository;
         }
 
         public ActionResult Index()
@@ -25,13 +28,15 @@ namespace Terrarium.Server.Controllers
 
         public ActionResult Usage()
         {
-            var vm = new UsageViewModel();
+            var alias = Request.QueryString["Alias"] ?? User.Identity.Name;
 
-            var alias = Request.QueryString["Alias"] ?? "Context.User.Identity.Name";
-            vm.UserAliasLabel = alias;
-            vm.UserTodayLabel = "0 hours";
-            vm.UserWeekLabel = "0 hours";
-            vm.UserTotalLabel = "0 hours";
+            var vm = new UsageViewModel
+            {
+                UserAliasLabel = alias,
+                UserTodayLabel = _usageRepository.GetUserUsage(alias, UsagePeriod.Today).TotalHours + " hours",
+                UserWeekLabel = _usageRepository.GetUserUsage(alias, UsagePeriod.Week).TotalHours + " hours",
+                UserTotalLabel = _usageRepository.GetUserUsage(alias, UsagePeriod.Total).TotalHours + " hours"
+            };
 
             return View(vm);
         }

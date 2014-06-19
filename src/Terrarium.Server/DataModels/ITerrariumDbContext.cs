@@ -6,5 +6,6 @@ namespace Terrarium.Server.DataModels
     public interface ITerrariumDbContext
     {
         IQueryable<RandomTip> Tips { get; }
+        IQueryable<Usage> Usages { get; }
     }
 }

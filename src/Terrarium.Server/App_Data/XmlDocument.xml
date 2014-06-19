@@ -723,6 +723,20 @@
             </summary>
             <param name="data">Watson object containing error information.</param>
         </member>
+        <member name="M:Terrarium.Server.WebApiApplication.Application_Start">
+            <summary>
+            Gets this party started.
+            </summary>
+            <remarks>
+            The database will be created (locally) automatically but
+            if you want to seed the database with some values just
+            add this line below:
+            <code>
+                System.Data.Entity.Database.SetInitializer(new TerrariumDbSeedInitializer());
+            </code>
+            and modify the TerrariumDbSeedInitiailizer class with whatever values you want.
+            </remarks>
+        </member>
         <member name="T:Terrarium.Server.Models.OrganismType">
             <summary>
             Used to filter organisms by type when returning
@@ -842,6 +856,14 @@
         </member>
         <member name="F:Terrarium.Server.Models.UsageData.WorldWidth">
             <remarks/>
+        </member>
+        <member name="M:Terrarium.Server.Repositories.UsageRepository.GetPeriodDates(Terrarium.Server.Models.UsagePeriod,System.DateTime@,System.DateTime@)">
+            <summary>
+            This is a helper function to give proper dates given the UsagePeriod
+            </summary>
+            <param name="period">The period we care about</param>
+            <param name="startDate">The startDate, to be filled in by this function</param>
+            <param name="endDate">The endDate, to be filled in by this function</param>
         </member>
     </members>
 </doc>
