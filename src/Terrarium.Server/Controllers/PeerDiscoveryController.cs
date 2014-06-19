@@ -17,6 +17,7 @@ namespace Terrarium.Server.Controllers
         /// </summary>
         /// <param name="email">E-mail address of the Terrarium user</param>
         /// <returns>Boolean indicating success or failure of the user registration.</returns>
+        [HttpGet]
         public Boolean RegisterUser(string email)
         {
             return true;
@@ -28,6 +29,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="version">String specifying the version number.</param>
         /// <param name="channel">String specifying the channel number.</param>
         /// <returns>Integer count of the number of peers for the specified version and channel number.</returns>
+        [HttpGet]
         public int GetNumPeers(string version, string channel)
         {
             return 10;
@@ -37,6 +39,7 @@ namespace Terrarium.Server.Controllers
         /// Validates a peer connection.
         /// </summary>
         /// <returns>A string representing the "REMOTE_ADDR" attribute from the Web Application ServerVariables collection.</returns>
+        [HttpGet]
         public string ValidatePeer()
         {
             return string.Empty;
@@ -66,6 +69,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="channel">String specifying the channel number.</param>
         /// <param name="guid">Guid (Globally Unique Identifier) for the peer connection.</param>
         /// <returns>A PeerRegisterResult object containing the registration result</returns>
+        [HttpPost]
         public PeerRegisterResult RegisterMyPeerGetCountAndPeerList(string version, string channel, Guid guid)
         {
             var result = new PeerRegisterResult();

@@ -36,6 +36,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="guid">Guid associated with a peer connection.</param>
         /// <param name="currentTick">Integer representing the current tick (time increment).</param>
         /// <returns>A possible value from the ReturnCode enumeration.</returns>
+        [HttpGet]
         public int ReportPopulation(object data, Guid guid, int currentTick)
         {
             return 0;

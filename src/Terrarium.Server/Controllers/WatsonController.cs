@@ -12,6 +12,7 @@ namespace Terrarium.Server.Controllers
         /// Takes an object from a client and inserts a record into the database.
         /// </summary>
         /// <param name="data">Watson object containing error information.</param>
+        [HttpPost]
         public void ReportError(Watson data)
         {
             // TODO

@@ -12,6 +12,7 @@ namespace Terrarium.Server.Controllers
         /// Report a real bug with Terrarium
         /// </summary>
         /// <param name="bug">Information from the client with details of the bug</param>
+        [HttpPost]
         public void ReportBug(Bug bug)
         {
             // TODO

@@ -15,6 +15,7 @@ namespace Terrarium.Server.Controllers
         /// Gets a list of all species that have been blacklisted.
         /// </summary>
         /// <returns>The list of blacklisted species.</returns>
+        [HttpGet]
         public IEnumerable<string> GetBlacklistedSpecies()
         {
             return null;
@@ -26,6 +27,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="version">The specific version of the species to get.</param>
         /// <param name="filter">The name of the species to filter or "All" for all available creatures.</param>
         /// <returns>A collection of creatures that meets the version and filter criteria</returns>
+        [HttpGet]
         public object GetExtinctSpecies(string version, string filter)
         {
             return null;
@@ -37,6 +39,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="version">The specific version of the species to get.</param>
         /// <param name="filter">The name of the species to filter or "All" for all available creatures.</param>
         /// <returns>A collection of creatures that meets the version and filter criteria</returns>
+        [HttpGet]
         public object GetAllSpecies(string version, string filter)
         {
             return null;
@@ -48,6 +51,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="name">The name of the species to get</param>
         /// <param name="version">The version of the species to get</param>
         /// <returns>A byte array of the .NET assembly matching the criterion</returns>
+        [HttpGet]
         public Byte[] GetSpeciesAssembly(string name, string version)
         {
             return null;
@@ -60,6 +64,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="version">The version of the species to reintroduce</param>
         /// <param name="peerGuid"></param>
         /// <returns>A byte array of the .NET assembly matching the criterion</returns>
+        [HttpGet]
         public Byte[] ReintroduceSpecies(string name, string version, Guid peerGuid)
         {
             return null;
@@ -88,6 +93,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="assemblyFullName"></param>
         /// <param name="assemblyCode"></param>
         /// <returns></returns>
+        [HttpPost, HttpGet]
         public SpeciesServiceStatus Add(string name, string version, string type, string author, string email,
             string assemblyFullName, byte[] assemblyCode)
         {
