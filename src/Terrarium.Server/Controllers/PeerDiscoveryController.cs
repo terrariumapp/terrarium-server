@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using Terrarium.Server.Models;
 
@@ -18,9 +20,10 @@ namespace Terrarium.Server.Controllers
         /// <param name="email">E-mail address of the Terrarium user</param>
         /// <returns>Boolean indicating success or failure of the user registration.</returns>
         [HttpGet]
-        public Boolean RegisterUser(string email)
+        public string RegisterUser(string email)
         {
-            return true;
+            var ipAddress = GetClientIpAddress(Request);
+            return ipAddress;
         }
 
         /// <summary>
@@ -79,6 +82,15 @@ namespace Terrarium.Server.Controllers
             result.Result = RegisterPeerResult.Success;
 
             return result;
+        }
+
+        public static string GetClientIpAddress(HttpRequestMessage request)
+        {
+            if (request.Properties.ContainsKey("MS_HttpContext"))
+            {
+                return ((HttpContextBase)request.Properties["MS_HttpContext"]).Request.UserHostAddress;
+            }
+            throw new Exception("Client IP Address Not Found in HttpRequest");
         }
     }
 }
