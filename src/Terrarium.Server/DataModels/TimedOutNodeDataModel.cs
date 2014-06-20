@@ -4,13 +4,14 @@ using Terrarium.Server.Models;
 
 namespace Terrarium.Server.DataModels
 {
-    public class RandomTipDataModel : EntityTypeConfiguration<RandomTip>
+    public class TimedOutNodeDataModel : EntityTypeConfiguration<TimedOutNode>
     {
-        public RandomTipDataModel()
+        public TimedOutNodeDataModel()
         {
-            ToTable("RandomTips");
+            ToTable("TimedOutNodes");
             Property(x => x.Id).IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(x => x.Tip).IsRequired().HasMaxLength(512);
+            Property(x => x.GUID).IsRequired();
+            Property(x => x.TimeoutDate).IsRequired();
         }
     }
 }

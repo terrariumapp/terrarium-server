@@ -4,6 +4,7 @@ namespace Terrarium.Server.Models
 {
     public class Usage
     {
+        public int Id { get; set; }
         public string Alias { get; set; }
         public string Domain { get; set; }
         public DateTime TickTime { get; set; }

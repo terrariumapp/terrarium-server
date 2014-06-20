@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Terrarium.Server.DataModels;
-//using Terrarium.Server.Migrations;
+using Terrarium.Server.Migrations;
 
 namespace Terrarium.Server
 {
@@ -13,7 +13,7 @@ namespace Terrarium.Server
     {
         protected void Application_Start()
         {
-//            Database.SetInitializer(new MigrateDatabaseToLatestVersion<TerrariumDbContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<TerrariumDbContext, Configuration>());
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
             MvcHandler.DisableMvcResponseHeader = true;

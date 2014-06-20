@@ -4,13 +4,14 @@ using Terrarium.Server.Models;
 
 namespace Terrarium.Server.DataModels
 {
-    public class RandomTipDataModel : EntityTypeConfiguration<RandomTip>
+    public class UsageSummaryDataModel : EntityTypeConfiguration<UsageSummary>
     {
-        public RandomTipDataModel()
+        public UsageSummaryDataModel()
         {
-            ToTable("RandomTips");
+            ToTable("UsageSummary");
             Property(x => x.Id).IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(x => x.Tip).IsRequired().HasMaxLength(512);
+            Property(x => x.Peers).IsRequired();
+            Property(x => x.SummaryDateTime).IsRequired();
         }
     }
 }

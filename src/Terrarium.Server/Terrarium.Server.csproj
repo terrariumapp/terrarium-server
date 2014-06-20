@@ -171,27 +171,54 @@
     <Compile Include="Controllers\SpeciesController.cs" />
     <Compile Include="Controllers\UsageController.cs" />
     <Compile Include="Controllers\WatsonController.cs" />
+    <Compile Include="DataModels\DailyPopulationDataModel.cs" />
+    <Compile Include="DataModels\DownloadDataModel.cs" />
+    <Compile Include="DataModels\HistoryDataModel.cs" />
     <Compile Include="DataModels\ITerrariumDbContext.cs" />
+    <Compile Include="DataModels\NodeLastContactDataModel.cs" />
+    <Compile Include="DataModels\PeerDataModel.cs" />
     <Compile Include="DataModels\RandomTipDataModel.cs" />
+    <Compile Include="DataModels\ShutdownPeerDataModel.cs" />
+    <Compile Include="DataModels\SpeciesDataModel.cs" />
     <Compile Include="DataModels\TerrariumDbContext.cs" />
-    <Compile Include="DataModels\TerrariumDbSeedInitializer.cs" />
+    <Compile Include="DataModels\TimedOutNodeDataModel.cs" />
     <Compile Include="DataModels\UsageDataModel.cs" />
+    <Compile Include="DataModels\UsageSummaryDataModel.cs" />
+    <Compile Include="DataModels\UserRegisterDataModel.cs" />
+    <Compile Include="DataModels\VersionedSettingDataModel.cs" />
     <Compile Include="DataModels\WatsonDataModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201406200054348_InitialCreate.cs" />
+    <Compile Include="Migrations\201406200054348_InitialCreate.Designer.cs">
+      <DependentUpon>201406200054348_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BasePeer.cs" />
     <Compile Include="Models\Bug.cs" />
+    <Compile Include="Models\DailyPopulation.cs" />
+    <Compile Include="Models\Download.cs" />
+    <Compile Include="Models\History.cs" />
+    <Compile Include="Models\NodeLastContact.cs" />
     <Compile Include="Models\OrganismType.cs" />
+    <Compile Include="Models\Peer.cs" />
     <Compile Include="Models\PeerVersionResult.cs" />
     <Compile Include="Models\RegisterPeerResult.cs" />
     <Compile Include="Models\PeerRegisterResult.cs" />
     <Compile Include="Models\ServerSettings.cs" />
+    <Compile Include="Models\ShutdownPeer.cs" />
+    <Compile Include="Models\Species.cs" />
     <Compile Include="Models\SpeciesServiceStatus.cs" />
     <Compile Include="Models\RandomTip.cs" />
+    <Compile Include="Models\TimedOutNode.cs" />
     <Compile Include="Models\Usage.cs" />
     <Compile Include="Models\UsageData.cs" />
     <Compile Include="Models\UsagePeriod.cs" />
+    <Compile Include="Models\UsageSummary.cs" />
+    <Compile Include="Models\UserRegister.cs" />
     <Compile Include="Models\UserUsageSummary.cs" />
+    <Compile Include="Models\VersionedSetting.cs" />
     <Compile Include="Models\Watson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ITipRepository.cs" />
@@ -283,6 +310,11 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201406200054348_InitialCreate.resx">
+      <DependentUpon>201406200054348_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

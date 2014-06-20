@@ -9,9 +9,6 @@ namespace Terrarium.Server.DataModels
         public WatsonDataModel()
         {
             ToTable("Watson");
-
-            HasKey(x => x.Id);
-
             Property(x => x.Id).IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             Property(x => x.LogType).HasMaxLength(50);
             Property(x => x.MachineName).HasMaxLength(255);

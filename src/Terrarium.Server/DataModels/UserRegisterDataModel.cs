@@ -4,13 +4,14 @@ using Terrarium.Server.Models;
 
 namespace Terrarium.Server.DataModels
 {
-    public class RandomTipDataModel : EntityTypeConfiguration<RandomTip>
+    public class UserRegisterDataModel : EntityTypeConfiguration<UserRegister>
     {
-        public RandomTipDataModel()
+        public UserRegisterDataModel()
         {
-            ToTable("RandomTips");
+            ToTable("UserRegister");
             Property(x => x.Id).IsRequired().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            Property(x => x.Tip).IsRequired().HasMaxLength(512);
+            Property(x => x.IPAddress).IsRequired().HasMaxLength(50);
+            Property(x => x.Email).HasMaxLength(255);
         }
     }
 }
