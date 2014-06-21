@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Http;
+using Terrarium.Sdk.Enumerations;
 using Terrarium.Server.Models;
 
 namespace Terrarium.Server.Controllers

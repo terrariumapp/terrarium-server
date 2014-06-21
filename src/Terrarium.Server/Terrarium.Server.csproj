@@ -123,6 +123,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Terrarium.Sdk">
+      <HintPath>..\packages\Terrarium.Sdk.1.6.0.0\lib\net45\Terrarium.Sdk.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -209,7 +212,6 @@
     <Compile Include="Models\ServerSettings.cs" />
     <Compile Include="Models\ShutdownPeer.cs" />
     <Compile Include="Models\Species.cs" />
-    <Compile Include="Models\SpeciesServiceStatus.cs" />
     <Compile Include="Models\RandomTip.cs" />
     <Compile Include="Models\TimedOutNode.cs" />
     <Compile Include="Models\Usage.cs" />
