@@ -45,7 +45,7 @@ namespace Terrarium.Server.Controllers
         [HttpGet]
         public string ValidatePeer()
         {
-            return string.Empty;
+            return ((HttpContextWrapper)Request.Properties["MS_HttpContext"]).Request.ServerVariables["REMOTE_ADDR"];
         }
 
         /// <summary>
