@@ -5,24 +5,36 @@
 <div class="jumbotron">
     <h1>Terrarium Server</h1>
     <p class="lead">Terrarium provides a great way for developers to learn about the .NET programming model and language as they develop creatures and introduce them into a peer-to-peer ecosystem.</p>
-    <p><a href="http://terrarium.azurewebsites.net/" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <p>
+        <a href="http://terrarium.azurewebsites.net/" class="btn btn-primary btn-lg">Learn more &raquo;</a>
+        <a href="https://www.nuget.org/packages/Terrarium.Sdk/"><img src="@Url.Content("~/Images/nuget.png")" alt="" /></a>
+        <a href="https://github.com/terrariumapp"><img src="@Url.Content("~/Images/github.png")" alt="Fork us on GitHub" /></a>
+    </p>
 </div>
 
-<h2>Documentation and Help</h2>
-<p>
-    This site contains the live Terrarium Server @Html.ActionLink("API (and documentation)", "Index", "Help") that clients use.
-</p>
-<p>
-    Looking for developer documentation, background information, news, tips, strategies, or general help?
-    Please visit <a href="http://terrarium.azurewebsites.net/">the main site here</a>. 
-</p>
+<!-- layout blatently stolen from http://www.west-wind.com/westwind.applicationconfiguration/ -->
 
-<h2>Usage Statistics</h2>
-<p>
-    You can use this page to track your usage statistics. Check it out @Html.ActionLink("now", "Usage", "Home")!
-</p>
-
-<h2>Known Issues</h2>
-<p>
-    For a list of known issues or problems please check the <a href="http://terrarium.azurewebsites.net/blog/">Terrarium blog here</a>.
-</p>
+<div class="row">
+    <div class="col-lg-4">
+        <h2>Documentation and Help</h2>
+        <p>
+            This site contains the live Terrarium Server @Html.ActionLink("API (and documentation)", "Index", "Help") that clients use.
+        </p>
+        <p>
+            Looking for developer documentation, background information, news, tips, strategies, or general help?
+            Please visit <a href="http://terrarium.azurewebsites.net/">the main site here</a>.
+        </p>
+    </div>
+    <div class="col-lg-4">
+        <h2>Usage Statistics</h2>
+        <p>
+            You can use this page to track your usage statistics. Check it out @Html.ActionLink("now", "Usage", "Home")!
+        </p>
+    </div>
+    <div class="col-lg-4">
+        <h2>Known Issues</h2>
+        <p>
+            For a list of known issues or problems please check the <a href="http://terrarium.azurewebsites.net/blog/">Terrarium blog here</a>.
+        </p>
+    </div>
+</div>

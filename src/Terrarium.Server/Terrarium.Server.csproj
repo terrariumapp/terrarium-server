@@ -273,6 +273,8 @@
     <Content Include="Images\banner_top_right.png" />
     <Content Include="Images\border_left.png" />
     <Content Include="Images\border_right.png" />
+    <Content Include="Images\github.png" />
+    <Content Include="Images\nuget.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
