@@ -481,17 +481,6 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
-        <member name="T:Terrarium.Server.Controllers.BugController">
-            <summary>
-            Allows users to submit bug reports to the server
-            </summary>
-        </member>
-        <member name="M:Terrarium.Server.Controllers.BugController.ReportBug(Terrarium.Server.Models.Bug)">
-            <summary>
-            Report a real bug with Terrarium
-            </summary>
-            <param name="bug">Information from the client with details of the bug</param>
-        </member>
         <member name="T:Terrarium.Server.Controllers.ChartController">
             <summary>
             The chart service is capable of providing remote clients
@@ -502,7 +491,7 @@
             graph generation and the information required to generate top-n reports.
             </summary>
         </member>
-        <member name="M:Terrarium.Server.Controllers.ChartController.GetSpeciesList">
+        <member name="M:Terrarium.Server.Controllers.ChartController.Species">
             <summary>
             Returns a graph of ALL species along with their latest
             point of population data.
@@ -527,26 +516,26 @@
             <param name="num"></param>
             <returns></returns>
         </member>
-        <member name="T:Terrarium.Server.Controllers.MessagingController">
+        <member name="T:Terrarium.Server.Controllers.MessageController">
             <summary>
             Returns various informational messages from the server
             </summary>
         </member>
-        <member name="M:Terrarium.Server.Controllers.MessagingController.GetWelcomeMessage">
+        <member name="M:Terrarium.Server.Controllers.MessageController.Welcome">
             <summary>
             Gets the welcome message for the server.
             </summary>
             <returns>The welcome message as stored in the web.config file or a stock one if we can't read it.</returns>
         </member>
-        <member name="M:Terrarium.Server.Controllers.MessagingController.GetMessageOfTheDay">
+        <member name="M:Terrarium.Server.Controllers.MessageController.Daily">
             <summary>
             Gets the message of the day from the server.
             </summary>
             <returns>The message of the day as stored in the web.config file or a stock one if we can't read it.</returns>
         </member>
-        <member name="M:Terrarium.Server.Controllers.MessagingController.GetLatestVersion">
+        <member name="M:Terrarium.Server.Controllers.MessageController.Version">
             <summary>
-            Gets the latest version of Terrarium from the server.
+            Gets the latest version of the Terrarium SDK this server is using.
             </summary>
             <returns>The latest version as stored in the web.config file or a stock one if we can't read it.</returns>
         </member>
@@ -596,7 +585,7 @@
             <param name="guid">Guid (Globally Unique Identifier) for the peer connection.</param>
             <returns>A PeerRegisterResult object containing the registration result</returns>
         </member>
-        <member name="T:Terrarium.Server.Controllers.ReportController">
+        <member name="T:Terrarium.Server.Controllers.ReportsController">
             <summary>
             This class implements the reporting web service for the Terrarium Server.
             This web service takes reporting data from clients and inserts
@@ -606,7 +595,7 @@
             species populations, etc.
             </summary>
         </member>
-        <member name="M:Terrarium.Server.Controllers.ReportController.ReportPopulation(System.Object,System.Guid,System.Int32)">
+        <member name="M:Terrarium.Server.Controllers.ReportsController.Population(System.Object,System.Guid,System.Int32)">
             <summary>
             This method takes a dataset from the client along with
             a game state guid and the tick this data represents as its parameter. It uses this
@@ -706,11 +695,18 @@
             Reports on usage of the system.
             </summary>
         </member>
-        <member name="M:Terrarium.Server.Controllers.UsageController.ReportUsage(Terrarium.Server.Models.UsageData)">
+        <member name="M:Terrarium.Server.Controllers.UsageController.ReportUsage(Terrarium.Server.Models.Usage)">
             <summary>
-            Allows a client to report it's usage and adds it to the system.
+            <para>
+            Allows a client to report its own usage statistics and adds it to the system.
+            </para>
+            <para>
+            The IPAddress portion of the UsageData object is automatically filled in by the server.
+            </para>
+            <para>
+            Usage reporting is only allowed once every 60 minutes from a client.</para>
             </summary>
-            <param name="data">UsageData from the client about the current state.</param>
+            <param name="data">UsageData from the client about the current state of their Terrarium.</param>
         </member>
         <member name="T:Terrarium.Server.Controllers.WatsonController">
             <summary>
@@ -719,9 +715,31 @@
         </member>
         <member name="M:Terrarium.Server.Controllers.WatsonController.ReportError(Terrarium.Server.Models.Watson)">
             <summary>
+            <para>
             Takes an object from a client and inserts a record into the database.
+            </para>
+            <para>
+            This is used by the Terrarium Client to submit application information in
+            case a crash happens and is done automatically.
+            </para>
+            <para>
+            The Id, MachineName, and DateSubmitted part of the Watson object are ignored
+            and automatically filled in by the server.
+            </para>
             </summary>
-            <param name="data">Watson object containing error information.</param>
+            <param name="data">Watson data object containing error information from the client application.</param>
+        </member>
+        <member name="T:Terrarium.Server.Infrastructure.RequestHelpers">
+            <summary>
+            Helper class to handle HttpRequests
+            </summary>
+        </member>
+        <member name="M:Terrarium.Server.Infrastructure.RequestHelpers.GetClientIpAddress(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Returns the clients IP address. Usable from ApiControllers.
+            </summary>
+            <param name="request"></param>
+            <returns>The IP address from the client machine.</returns>
         </member>
         <member name="T:Terrarium.Server.Models.OrganismType">
             <summary>
@@ -762,69 +780,6 @@
             <summary>
             Indicates an unsuccessful attempt to register a peer connection.
             </summary>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.Alias">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.AnimalCount">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.ClrVersion">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.Domain">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.GameVersion">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.IPAddress">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.MachineName">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.MaxAnimalCount">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.MaxWorkingSet">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.MinWorkingSet">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.OSVersion">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.PeerChannel">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.PeerCount">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.ProcessorCount">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.ProcessorTimeInSeconds">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.ProcessStartTime">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.TickTime">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.UsageMinutes">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.WorkingSet">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.WorldHeight">
-            <remarks/>
-        </member>
-        <member name="F:Terrarium.Server.Models.UsageData.WorldWidth">
-            <remarks/>
         </member>
         <member name="M:Terrarium.Server.Repositories.UsageRepository.GetPeriodDates(Terrarium.Server.Models.UsagePeriod,System.DateTime@,System.DateTime@)">
             <summary>

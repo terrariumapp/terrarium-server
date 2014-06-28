@@ -165,12 +165,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\BugController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MessagingController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\PeerDiscoveryController.cs" />
-    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\SpeciesController.cs" />
     <Compile Include="Controllers\UsageController.cs" />
     <Compile Include="Controllers\WatsonController.cs" />
@@ -193,6 +192,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\RequestHelpers.cs" />
     <Compile Include="Migrations\201406200054348_InitialCreate.cs" />
     <Compile Include="Migrations\201406200054348_InitialCreate.Designer.cs">
       <DependentUpon>201406200054348_InitialCreate.cs</DependentUpon>
@@ -215,7 +215,6 @@
     <Compile Include="Models\RandomTip.cs" />
     <Compile Include="Models\TimedOutNode.cs" />
     <Compile Include="Models\Usage.cs" />
-    <Compile Include="Models\UsageData.cs" />
     <Compile Include="Models\UsagePeriod.cs" />
     <Compile Include="Models\UsageSummary.cs" />
     <Compile Include="Models\UserRegister.cs" />
@@ -320,6 +319,7 @@
       <DependentUpon>201406200054348_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

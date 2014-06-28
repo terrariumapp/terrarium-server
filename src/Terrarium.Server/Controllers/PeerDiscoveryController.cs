@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using Terrarium.Server.DataModels;
+using Terrarium.Server.Infrastructure;
 using Terrarium.Server.Models;
 
 namespace Terrarium.Server.Controllers
@@ -14,16 +17,50 @@ namespace Terrarium.Server.Controllers
     /// </summary>
     public class PeerDiscoveryController : ApiController
     {
+        private readonly ITerrariumDbContext _context;
+
+        public PeerDiscoveryController(ITerrariumDbContext context)
+        {
+            _context = context;
+        }
+
         /// <summary>
         /// Registers a Terrarium client user into the server database.
         /// </summary>
         /// <param name="email">E-mail address of the Terrarium user</param>
         /// <returns>Boolean indicating success or failure of the user registration.</returns>
-        [HttpGet]
-        public string RegisterUser(string email)
+        [HttpPost]
+        [Route("api/peers/users/register")]
+        public HttpResponseMessage RegisterUser(string email)
         {
-            var ipAddress = GetClientIpAddress(Request);
-            return ipAddress;
+            if (string.IsNullOrEmpty(email))
+            {
+                throw new HttpResponseException(new HttpResponseMessage
+                {
+                    StatusCode = HttpStatusCode.BadRequest,
+                    Content = new StringContent("No email address provided")
+                });
+            }
+
+            try
+            {
+                var ipAddress = RequestHelpers.GetClientIpAddress(Request);
+                _context.AddUser(new UserRegister
+                {
+                    Email = email, 
+                    IPAddress = ipAddress
+                });
+            }
+            catch (Exception e)
+            {
+                throw new HttpResponseException(new HttpResponseMessage
+                {
+                    StatusCode = HttpStatusCode.InternalServerError,
+                    Content = new StringContent(e.Message)
+                });
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         /// <summary>
@@ -33,6 +70,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="channel">String specifying the channel number.</param>
         /// <returns>Integer count of the number of peers for the specified version and channel number.</returns>
         [HttpGet]
+        [Route("api/peers/count")]
         public int GetNumPeers(string version, string channel)
         {
             return 10;
@@ -43,9 +81,10 @@ namespace Terrarium.Server.Controllers
         /// </summary>
         /// <returns>A string representing the "REMOTE_ADDR" attribute from the Web Application ServerVariables collection.</returns>
         [HttpGet]
+        [Route("api/peers/validate")]
         public string ValidatePeer()
         {
-            return ((HttpContextWrapper)Request.Properties["MS_HttpContext"]).Request.ServerVariables["REMOTE_ADDR"];
+            return RequestHelpers.GetClientIpAddress(Request);
         }
 
         /// <summary>
@@ -55,14 +94,10 @@ namespace Terrarium.Server.Controllers
         /// <param name="version">String specifying the version number.</param>
         /// <returns>A PeerVersionResult object containing the results of the query</returns>
         [HttpGet]
-        public PeerVersionResult IsVersionDisabled(string version)
+        public HttpResponseMessage IsVersionDisabled(string version)
         {
-            var result = new PeerVersionResult();
-
-            result.Result = false;
-            result.ErrorMessage = string.Empty;
-
-            return result;
+            var result = new PeerVersionResult {Result = false, ErrorMessage = string.Empty};
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         /// <summary>
@@ -73,6 +108,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="guid">Guid (Globally Unique Identifier) for the peer connection.</param>
         /// <returns>A PeerRegisterResult object containing the registration result</returns>
         [HttpPost]
+        [Route("api/peers/register")]
         public PeerRegisterResult RegisterMyPeerGetCountAndPeerList(string version, string channel, Guid guid)
         {
             var result = new PeerRegisterResult();
@@ -82,15 +118,6 @@ namespace Terrarium.Server.Controllers
             result.Result = RegisterPeerResult.Success;
 
             return result;
-        }
-
-        public static string GetClientIpAddress(HttpRequestMessage request)
-        {
-            if (request.Properties.ContainsKey("MS_HttpContext"))
-            {
-                return ((HttpContextBase)request.Properties["MS_HttpContext"]).Request.UserHostAddress;
-            }
-            throw new Exception("Client IP Address Not Found in HttpRequest");
         }
     }
 }

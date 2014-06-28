@@ -11,7 +11,7 @@ namespace Terrarium.Server.Controllers
     /// These data points are used used when creating graphs of the server activity, 
     /// species populations, etc.
     /// </summary>
-    public class ReportController : ApiController
+    public class ReportsController : ApiController
     {
         /// <summary>
         /// This method takes a dataset from the client along with
@@ -37,7 +37,8 @@ namespace Terrarium.Server.Controllers
         /// <param name="currentTick">Integer representing the current tick (time increment).</param>
         /// <returns>A possible value from the ReturnCode enumeration.</returns>
         [HttpGet]
-        public int ReportPopulation(object data, Guid guid, int currentTick)
+        [Route("api/reports/population")]
+        public int Population(object data, Guid guid, int currentTick)
         {
             return 0;
         }

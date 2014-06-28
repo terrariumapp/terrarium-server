@@ -20,7 +20,8 @@ namespace Terrarium.Server.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<object> GetSpeciesList()
+        [Route("api/charts/species")]
+        public IEnumerable<object> Species()
         {
             return null;
         }
@@ -32,6 +33,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="species"></param>
         /// <returns></returns>
         [HttpGet]
+        [Route("api/charts/species/{species}")]
         public IEnumerable<object> GrabLatestSpeciesData(string species)
         {
             return null;
@@ -46,6 +48,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="num"></param>
         /// <returns></returns>
         [HttpGet]
+        [Route("api/charts/animals/top")]
         public IEnumerable<object> GetTopAnimals(string version, OrganismType tat, int num)
         {
             return null;

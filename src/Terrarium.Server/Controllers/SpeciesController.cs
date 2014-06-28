@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Web.Http;
 using Terrarium.Sdk.Enumerations;
-using Terrarium.Server.Models;
 
 namespace Terrarium.Server.Controllers
 {
@@ -17,6 +16,7 @@ namespace Terrarium.Server.Controllers
         /// </summary>
         /// <returns>The list of blacklisted species.</returns>
         [HttpGet]
+        [Route("api/species/blacklisted")]
         public IEnumerable<string> GetBlacklistedSpecies()
         {
             return null;
@@ -29,6 +29,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="filter">The name of the species to filter or "All" for all available creatures.</param>
         /// <returns>A collection of creatures that meets the version and filter criteria</returns>
         [HttpGet]
+        [Route("api/species/extinct")]
         public object GetExtinctSpecies(string version, string filter)
         {
             return null;
@@ -41,6 +42,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="filter">The name of the species to filter or "All" for all available creatures.</param>
         /// <returns>A collection of creatures that meets the version and filter criteria</returns>
         [HttpGet]
+        [Route("api/species")]
         public object GetAllSpecies(string version, string filter)
         {
             return null;
@@ -53,6 +55,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="version">The version of the species to get</param>
         /// <returns>A byte array of the .NET assembly matching the criterion</returns>
         [HttpGet]
+        [Route("api/species/{name}/assembly")]
         public Byte[] GetSpeciesAssembly(string name, string version)
         {
             return null;

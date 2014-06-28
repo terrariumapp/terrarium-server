@@ -30,7 +30,7 @@ namespace Terrarium.Server.DataModels
             Property(x => x.MinWorkingSet).IsRequired();
             Property(x => x.MaxWorkingSet).IsRequired();
             Property(x => x.ProcessorTime).IsRequired();
-            Property(x => x.ProcessStarTime).IsRequired();
+            Property(x => x.ProcessStartTime).HasColumnName("ProcessStarTime").IsRequired();
         }
     }
 }

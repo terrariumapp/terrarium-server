@@ -25,6 +25,6 @@ namespace Terrarium.Server.Models
         public int MaxWorkingSet { get; set; }
         public int MinWorkingSet { get; set; }
         public int ProcessorTime { get; set; }
-        public DateTime ProcessStarTime { get; set; }
+        public DateTime ProcessStartTime { get; set; }
     }
 }
