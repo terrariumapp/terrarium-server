@@ -6,3 +6,5 @@ ASP.NET MVC Server for Terrarium. The server provides the API interface that cli
 Terrarium is a continuation of the [.NET Terrarium project on CodePlex](https://terrarium2.codeplex.com/)
 
 [Terrarium Home Page](http://terrarium.azurewebsites.net/)
+
+The server will be coming online shortly.
