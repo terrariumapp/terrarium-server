@@ -11,6 +11,7 @@ namespace Terrarium.Server.Controllers
     /// <summary>
     /// Enables logging of errors from Terrarium clients.
     /// </summary>
+    [RoutePrefix("api/watson")]
     public class WatsonController : ApiController
     {
         private readonly ITerrariumDbContext _context;
@@ -35,7 +36,7 @@ namespace Terrarium.Server.Controllers
         /// </summary>
         /// <param name="data">Watson data object containing error information from the client application.</param>
         [HttpPost]
-        [Route("api/watson")]
+        [Route("")]
         public HttpResponseMessage ReportError(Watson data)
         {
             if (data == null)
