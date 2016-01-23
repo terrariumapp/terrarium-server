@@ -15,7 +15,6 @@ using System.Web.Http;
 #if Handle_PageResultOfT
 using System.Web.Http.OData;
 #endif
-using Terrarium.Server.Models;
 
 namespace Terrarium.Server.Areas.HelpPage
 {
@@ -35,7 +34,7 @@ namespace Terrarium.Server.Areas.HelpPage
         public static void Register(HttpConfiguration config)
         {
             //// Uncomment the following to use the documentation from XML documentation file.
-            config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
+            //config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
 
             //// Uncomment the following to use "sample string" as the sample for all actions that have string as the body parameter or return type.
             //// Also, the string arrays will be used for IEnumerable<string>. The sample objects will be serialized into different media type 
@@ -63,16 +62,10 @@ namespace Terrarium.Server.Areas.HelpPage
             //// Uncomment the following to use "[0]=foo&[1]=bar" directly as the sample for all actions that support form URL encoded format
             //// and have IEnumerable<string> as the body parameter or return type.
             //config.SetSampleForType("[0]=foo&[1]=bar", new MediaTypeHeaderValue("application/x-www-form-urlencoded"), typeof(IEnumerable<string>));
-            //config.SetSampleForType("[0]=alias&[1]=description&[2]=path&[3]=title&[4]=version", new MediaTypeHeaderValue("application/x-www-form-urlencoded"), typeof(Bug));
 
             //// Uncomment the following to use "1234" directly as the request sample for media type "text/plain" on the controller named "Values"
             //// and action named "Put".
             //config.SetSampleRequest("1234", new MediaTypeHeaderValue("text/plain"), "Values", "Put");
-            config.SetSampleResponse("1.0.0.0", new MediaTypeHeaderValue("application/json"), "Messages", "Version");
-            config.SetSampleResponse("1.0.0.0", new MediaTypeHeaderValue("text/json"), "Messages", "Version");
-            config.SetSampleResponse("1.0.0.0", new MediaTypeHeaderValue("text/html"), "Messages", "Version");
-            config.SetSampleResponse("<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">1.0.0.0</string>", new MediaTypeHeaderValue("application/xml"), "Messages", "Version");
-            config.SetSampleResponse("<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">1.0.0.0</string>", new MediaTypeHeaderValue("text/xml"), "Messages", "Version");
 
             //// Uncomment the following to use the image on "../images/aspNetHome.png" directly as the response sample for media type "image/png"
             //// on the controller named "Values" and action named "Get" with parameter "id".
@@ -84,14 +77,7 @@ namespace Terrarium.Server.Areas.HelpPage
 
             //// Uncomment the following to correct the sample response when the action returns an HttpResponseMessage with ObjectContent<string>.
             //// The sample will be generated as if the controller named "Values" and action named "Post" were returning a string.
-            
-            // MessageController
-            config.SetActualResponseType(typeof(string), "Messages", "Welcome");
-            config.SetActualResponseType(typeof(string), "Messages", "Daily");
-            config.SetActualResponseType(typeof(string), "Messages", "Version");
-
-            // PeerDiscoveryController
-            config.SetActualResponseType(typeof(PeerVersionResult), "PeerDiscovery", "IsVersionDisabled");
+            //config.SetActualResponseType(typeof(string), "Values", "Post");
         }
 
 #if Handle_PageResultOfT
