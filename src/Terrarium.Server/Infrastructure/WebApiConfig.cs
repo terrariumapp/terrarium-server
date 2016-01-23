@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using System.Web.Http;
 
-namespace Terrarium.Server
+namespace Terrarium.Server.Infrastructure
 {
     public static class WebApiConfig
     {

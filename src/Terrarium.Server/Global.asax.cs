@@ -1,10 +1,10 @@
-﻿using System.Data.Entity;
-using System.Web;
+﻿using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Terrarium.Server.DataModels;
+using Terrarium.Server.Infrastructure;
+
 namespace Terrarium.Server
 {
     public class WebApiApplication : HttpApplication

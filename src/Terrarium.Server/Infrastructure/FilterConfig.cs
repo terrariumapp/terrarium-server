@@ -1,7 +1,6 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace Terrarium.Server
+namespace Terrarium.Server.Infrastructure
 {
     public class FilterConfig
     {
