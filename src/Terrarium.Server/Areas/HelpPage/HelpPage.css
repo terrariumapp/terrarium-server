@@ -1,3 +1,16 @@
+.help-page h1,
+.help-page .h1,
+.help-page h2,
+.help-page .h2,
+.help-page h3,
+.help-page .h3,
+#body.help-page,
+.help-page-table th,
+.help-page-table pre,
+.help-page-table p {
+    font-family: "Segoe UI Light", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
 .help-page pre.wrapped {
     white-space: -moz-pre-wrap;
     white-space: -pre-wrap;
@@ -52,7 +65,7 @@
 
 .help-page .sample-header {
     border: 2px solid #D4D4D4;
-    background: #76B8DB;
+    background: #00497E;
     color: #FFFFFF;
     padding: 8px 15px;
     border-bottom: none;
@@ -91,4 +104,31 @@
 
 .help-page .parameter-annotations {
     width: 20%;
+}
+
+.help-page h1,
+.help-page .h1 {
+    font-size: 36px;
+    line-height: normal;
+}
+
+.help-page h2,
+.help-page .h2 {
+    font-size: 24px;
+}
+
+.help-page h3,
+.help-page .h3 {
+    font-size: 20px;
+}
+
+#body.help-page {
+    font-size: 14px;
+    line-height: 143%;
+    color: #333;
+}
+
+.help-page a {
+    color: #0000EE;
+    text-decoration: none;
 }
