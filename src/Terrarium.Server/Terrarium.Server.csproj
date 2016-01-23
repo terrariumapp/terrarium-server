@@ -214,6 +214,7 @@
     <Compile Include="Repositories\TipRepository.cs" />
     <Compile Include="Repositories\UsageRepository.cs" />
     <Compile Include="ViewModels\RandomTipViewModel.cs" />
+    <Compile Include="ViewModels\ServerStatusViewModel.cs" />
     <Compile Include="ViewModels\UsageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Data.Entity;
+using System.Web.Mvc;
+using Terrarium.Server.DataModels;
 using Terrarium.Server.Models;
 using Terrarium.Server.Repositories;
 using Terrarium.Server.ViewModels;
@@ -45,6 +47,21 @@ namespace Terrarium.Server.Controllers
         {
             var tip = _tipRepository.GetRandomTip();
             return PartialView("_RandomTips", new RandomTipViewModel {Tip = tip.Tip});
+        }
+
+        public ActionResult ServerStatus()
+        {
+            var vm = new ServerStatusViewModel
+            {
+                IsDatabaseUp = Database.Exists("TerrariumDbContext")
+            };
+
+            return PartialView("_ServerStatus", vm);
+        }
+
+        public ActionResult TopCritters()
+        {
+            return PartialView("_TopCritters");
         }
     }
 }
