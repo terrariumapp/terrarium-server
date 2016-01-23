@@ -5,15 +5,12 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Terrarium.Server.DataModels;
-using Terrarium.Server.Migrations;
-
 namespace Terrarium.Server
 {
     public class WebApiApplication : HttpApplication
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<TerrariumDbContext, Configuration>());
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
             MvcHandler.DisableMvcResponseHeader = true;
