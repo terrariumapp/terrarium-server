@@ -27,7 +27,14 @@
         Database
     </div>
     <div class="list-group-item">
-        <span class="badge" style="background-color: #d9534f">@Model.PeerCount</span>
+        @if (Model.PeerCount > 0)
+        {
+            <span class="badge" style="background-color: green">@Model.PeerCount</span>
+        }
+        else
+        {
+            <span class="badge" style="background-color: red">@Model.PeerCount</span>
+        }
         Peers
     </div>
 </div>

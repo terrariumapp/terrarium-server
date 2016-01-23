@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
@@ -15,6 +16,7 @@ namespace Terrarium.Server.Controllers
     /// peers.  The primary services here are registering a user's email address,
     /// getting peer counts and lists, and registering a peer.
     /// </summary>
+    [RoutePrefix("api/peers")]
     public class PeerDiscoveryController : ApiController
     {
         private readonly ITerrariumDbContext _context;
@@ -30,7 +32,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="email">E-mail address of the Terrarium user</param>
         /// <returns>Boolean indicating success or failure of the user registration.</returns>
         [HttpPost]
-        [Route("api/peers/users/register")]
+        [Route("users/register")]
         public HttpResponseMessage RegisterUser(string email)
         {
             if (string.IsNullOrEmpty(email))
@@ -70,10 +72,13 @@ namespace Terrarium.Server.Controllers
         /// <param name="channel">String specifying the channel number.</param>
         /// <returns>Integer count of the number of peers for the specified version and channel number.</returns>
         [HttpGet]
-        [Route("api/peers/count")]
+        [Route("count")]
         public int GetNumPeers(string version, string channel)
         {
-            return 10;
+            var count = (from o in _context.Peers
+                where o.Version == version && o.Channel == channel
+                select o).Count();
+            return count;
         }
 
         /// <summary>
@@ -81,7 +86,7 @@ namespace Terrarium.Server.Controllers
         /// </summary>
         /// <returns>A string representing the "REMOTE_ADDR" attribute from the Web Application ServerVariables collection.</returns>
         [HttpGet]
-        [Route("api/peers/validate")]
+        [Route("validate")]
         public string ValidatePeer()
         {
             return RequestHelpers.GetClientIpAddress(Request);
@@ -94,6 +99,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="version">String specifying the version number.</param>
         /// <returns>A PeerVersionResult object containing the results of the query</returns>
         [HttpGet]
+        [Route("disabled/{version}")]
         public HttpResponseMessage IsVersionDisabled(string version)
         {
             var result = new PeerVersionResult {Result = false, ErrorMessage = string.Empty};
@@ -108,7 +114,7 @@ namespace Terrarium.Server.Controllers
         /// <param name="guid">Guid (Globally Unique Identifier) for the peer connection.</param>
         /// <returns>A PeerRegisterResult object containing the registration result</returns>
         [HttpPost]
-        [Route("api/peers/register")]
+        [Route("register")]
         public PeerRegisterResult RegisterMyPeerGetCountAndPeerList(string version, string channel, Guid guid)
         {
             var result = new PeerRegisterResult();

@@ -23,6 +23,13 @@ namespace Terrarium.Server.DataModels
 
         public DbSet<UserRegister> Users { get; set; }
 
+        public DbSet<Peer> Peers { get; set; }
+
+        IQueryable<Peer> ITerrariumDbContext.Peers
+        {
+            get { return Peers; }
+        }
+
         IQueryable<UserRegister> ITerrariumDbContext.Users
         {
             get { return Users; }
@@ -81,6 +88,10 @@ namespace Terrarium.Server.DataModels
             SaveChanges();
         }
 
+        /// <summary>
+        /// Find all the EntityTypeConfiguration classes and register them automatically
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()

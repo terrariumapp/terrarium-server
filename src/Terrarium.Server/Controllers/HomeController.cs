@@ -51,9 +51,13 @@ namespace Terrarium.Server.Controllers
 
         public ActionResult ServerStatus()
         {
+            // hack fix me
+            var api = new PeerDiscoveryController(new TerrariumDbContext());
+
             var vm = new ServerStatusViewModel
             {
-                IsDatabaseUp = Database.Exists("TerrariumDbContext")
+                IsDatabaseUp = Database.Exists("TerrariumDbContext"),
+                PeerCount = api.GetNumPeers("", "")
             };
 
             return PartialView("_ServerStatus", vm);
