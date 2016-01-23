@@ -6,7 +6,7 @@ using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Terrarium.Server.DataModels;
 
-namespace Terrarium.Server
+namespace Terrarium.Server.Infrastructure
 {
     public class ContainerConfig
     {
@@ -16,6 +16,8 @@ namespace Terrarium.Server
 
             // register all controllers
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
+
+            // register all API controllers
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             // register the database context

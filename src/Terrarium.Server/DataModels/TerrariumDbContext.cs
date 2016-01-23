@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using Terrarium.Server.Models;
@@ -10,9 +9,10 @@ namespace Terrarium.Server.DataModels
 {
     public class TerrariumDbContext : DbContext, ITerrariumDbContext
     {
-        public TerrariumDbContext() : base("TerrariumDb")
+        public TerrariumDbContext() : base("TerrariumDbContext")
         {
-            Trace.Write(Database.Connection.ConnectionString);
+            Database.SetInitializer(new CreateDatabaseIfNotExists<TerrariumDbContext>());
+//            Database.SetInitializer(new MigrateDatabaseToLatestVersion<TerrariumDbContext, Configuration>());
         }
 
         public DbSet<Watson> Errors { get; set; }

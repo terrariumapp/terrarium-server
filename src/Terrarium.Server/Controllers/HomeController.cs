@@ -41,7 +41,6 @@ namespace Terrarium.Server.Controllers
             return View(vm);
         }
 
-        [ChildActionOnly]
         public ActionResult RandomTip()
         {
             var tip = _tipRepository.GetRandomTip();
